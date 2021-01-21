@@ -33,7 +33,7 @@ namespace ArraysAndStrings
 			//Console.WriteLine(thirdLetter);
 
 			Console.WriteLine("How many apples? :");
-			string input = Console.Read();
+			string input = Console.ReadLine();
 			//int numApples = Int32.Parse(input);
 			bool success = Int32.TryParse(input, out int numApples);
 			Console.WriteLine($"There are {numApples} apples");
