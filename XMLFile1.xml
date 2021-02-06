@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Member title ="Sparta Global Academy">
+	<trainee>
+		<id>001</id>
+		<first_name>Ashib</first_name>
+		<last_name>Hoque</last_name>
+		<course>CSharp Dev</course>
+	</trainee>
+	<trainer>
+		<id>002</id>
+		<first_name>Cathy</first_name>
+		<last_name>French</last_name>
+		<course>CSharp Dev</course>
+	</trainer>
+</Member>
