@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace NorthwindData
 {
-    public partial class ProductsAboveAveragePrice
-    {
-        public string ProductName { get; set; }
-        public decimal? UnitPrice { get; set; }
-    }
+	public partial class ProductsAboveAveragePrice
+	{
+		public string ProductName { get; set; }
+		public decimal? UnitPrice { get; set; }
+	}
 }

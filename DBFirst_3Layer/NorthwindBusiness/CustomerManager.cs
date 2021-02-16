@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using NorthwindData;
+using NorthwindData.Services;
 
 namespace NorthwindBusiness
 {
 	public class CustomerManager
 	{
+		private ICustomerService _service;
+
+		public CustomerManager()
+		{
+			_service = new CustomerService();
+		}
+
 		public Customer SelectedCustomer { get; set; }
 
 		public void Create(string customerId, string contactName, string companyName, string city = null)
@@ -22,13 +29,13 @@ namespace NorthwindBusiness
 		{
 			using (var db = new NorthwindContext())
 			{
-				SelectedCustomer = db.Customers.Where(c => c.CustomerId == customerId).FirstOrDefault();
+				SelectedCustomer = _service.GetCustomerById(customerId);
 				SelectedCustomer.ContactName = contactName;
 				SelectedCustomer.City = city;
 				SelectedCustomer.PostalCode = postcode;
 				SelectedCustomer.Country = country;
 				// write changes to database
-				db.SaveChanges();
+				_service.SaveCustomerChanges();
 			}
 		}
 
@@ -38,10 +45,7 @@ namespace NorthwindBusiness
 
 		public List<Customer> RetrieveAll()
 		{
-			using (var db = new NorthwindContext())
-			{
-				return db.Customers.ToList();
-			}
+			return _service.GetCustomerList();
 		}
 
 		public void SetSelectedCustomer(object selectedItem)

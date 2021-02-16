@@ -1,13 +1,9 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-namespace NorthwindData
+﻿namespace NorthwindData
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-  
-        }
-    }
+	internal class Program
+	{
+		private static void Main(string[] args)
+		{
+		}
+	}
 }

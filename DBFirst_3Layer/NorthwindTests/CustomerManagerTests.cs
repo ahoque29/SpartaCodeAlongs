@@ -1,70 +1,71 @@
-using NUnit.Framework;
+using System.Linq;
 using NorthwindBusiness;
 using NorthwindData;
-using System.Linq;
+using NUnit.Framework;
 
 namespace NorthwindTests
 {
-    public class CustomerTests
-    {
-        CustomerManager _customerManager;
-        [SetUp]
-        public void Setup()
-        {
-           _customerManager = new CustomerManager();
-            // remove test entry in DB if present
-            using (var db = new NorthwindContext())
-            {
-                var selectedCustomers =
-                from c in db.Customers
-                where c.CustomerId == "MAND"
-                select c;
+	public class CustomerTests
+	{
+		private CustomerManager _customerManager;
 
-                db.Customers.RemoveRange(selectedCustomers);
-                db.SaveChanges();
-            }
-        }
+		[SetUp]
+		public void Setup()
+		{
+			_customerManager = new CustomerManager();
+			// remove test entry in DB if present
+			using (var db = new NorthwindContext())
+			{
+				var selectedCustomers =
+				from c in db.Customers
+				where c.CustomerId == "MAND"
+				select c;
 
-        [Test]
-        public void WhenANewCustomerIsAdded_TheNumberOfCustemersIncreasesBy1()
-        {
-            using (var db = new NorthwindContext())
-            {
-                var numberOfCustomersBefore = db.Customers.Count();
-                _customerManager.Create("MAND", "Nish Mandal", "Sparta Global");
-                var numberOfCustomersAfter = db.Customers.Count();
+				db.Customers.RemoveRange(selectedCustomers);
+				db.SaveChanges();
+			}
+		}
 
-                Assert.AreEqual(numberOfCustomersBefore + 1, numberOfCustomersAfter);
-            }
-        }
+		[Test]
+		public void WhenANewCustomerIsAdded_TheNumberOfCustemersIncreasesBy1()
+		{
+			using (var db = new NorthwindContext())
+			{
+				var numberOfCustomersBefore = db.Customers.Count();
+				_customerManager.Create("MAND", "Nish Mandal", "Sparta Global");
+				var numberOfCustomersAfter = db.Customers.Count();
 
-        [Test]
-        public void WhenACustomersDetailsAreChanged_TheDatabaseIsUpdated()
-        {
-            using (var db = new NorthwindContext())
-            {
-                _customerManager.Create("MAND", "Nish Mandal", "Sparta Global", "Paris");
+				Assert.AreEqual(numberOfCustomersBefore + 1, numberOfCustomersAfter);
+			}
+		}
 
-                _customerManager.Update("MAND", "Nish Mandal", "Birmingham", null, null);
+		[Test]
+		public void WhenACustomersDetailsAreChanged_TheDatabaseIsUpdated()
+		{
+			using (var db = new NorthwindContext())
+			{
+				_customerManager.Create("MAND", "Nish Mandal", "Sparta Global", "Paris");
 
-                var updatedCustomer = db.Customers.Find("MAND");
-                Assert.AreEqual("Birmingham", updatedCustomer.City);
-            }
-        }
+				_customerManager.Update("MAND", "Nish Mandal", "Birmingham", null, null);
 
-        [TearDown]
-        public void TearDown()
-        {
-            using (var db = new NorthwindContext())
-            {
-                var selectedCustomers =
-                from c in db.Customers
-                where c.CustomerId == "MAND"
-                select c;
+				var updatedCustomer = db.Customers.Find("MAND");
+				Assert.AreEqual("Birmingham", updatedCustomer.City);
+			}
+		}
 
-                db.Customers.RemoveRange(selectedCustomers);
-                db.SaveChanges();
-            }
-        }
-    }
+		[TearDown]
+		public void TearDown()
+		{
+			using (var db = new NorthwindContext())
+			{
+				var selectedCustomers =
+				from c in db.Customers
+				where c.CustomerId == "MAND"
+				select c;
+
+				db.Customers.RemoveRange(selectedCustomers);
+				db.SaveChanges();
+			}
+		}
+	}
 }

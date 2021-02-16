@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 #nullable disable
 
 namespace NorthwindData
 {
-    public partial class CustomerDemographic
-    {
-        public CustomerDemographic()
-        {
-            CustomerCustomerDemos = new HashSet<CustomerCustomerDemo>();
-        }
+	public partial class CustomerDemographic
+	{
+		public CustomerDemographic()
+		{
+			CustomerCustomerDemos = new HashSet<CustomerCustomerDemo>();
+		}
 
-        public string CustomerTypeId { get; set; }
-        public string CustomerDesc { get; set; }
+		public string CustomerTypeId { get; set; }
+		public string CustomerDesc { get; set; }
 
-        public virtual ICollection<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
-    }
+		public virtual ICollection<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
+	}
 }

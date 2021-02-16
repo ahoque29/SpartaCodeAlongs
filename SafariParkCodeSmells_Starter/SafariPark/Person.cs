@@ -5,7 +5,7 @@ using System.Text;
 namespace ClassesApp
 {
     // A Class to represent a Person
-    public class BaseClass 
+    public class Person 
     {
         private string fn;
         private string _lastName;
@@ -14,8 +14,8 @@ namespace ClassesApp
         private int _houseNo;
         private string _street;
         private string _town;
-        public BaseClass() { }
-        public BaseClass(string fName, string lName, int hNo = 0, string street = "", string town = "")
+        public Person() { }
+        public Person(string fName, string lName, int hNo = 0, string street = "", string town = "")
         {
             fn = fName;
             _lastName = lName;
