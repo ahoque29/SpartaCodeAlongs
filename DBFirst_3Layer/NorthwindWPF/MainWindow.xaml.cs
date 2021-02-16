@@ -3,9 +3,6 @@ using NorthwindBusiness;
 
 namespace NorthwindWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private CustomerManager _customerManager = new CustomerManager();
