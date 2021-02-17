@@ -6,8 +6,12 @@ namespace NorthwindData.Services
 	{
 		List<Customer> GetCustomerList();
 
-		Customer GetCustomerById(string customId);
+		Customer GetCustomerById(string customerId);
+
+		void CreateCustomer(Customer customer);
 
 		void SaveCustomerChanges();
+
+		void DeleteCustomer(string customerId);
 	}
 }

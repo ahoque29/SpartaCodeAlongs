@@ -11,6 +11,16 @@ namespace NorthwindData.Services
 		{
 			_context = new NorthwindContext();
 		}
+		public void CreateCustomer(Customer customer)
+		{
+			_context.Customers.Add(customer);
+		}
+
+		public void DeleteCustomer(string customerId)
+		{
+			var del = GetCustomerById(customerId);
+			_context.RemoveRange(del);
+		}
 
 		public Customer GetCustomerById(string customerId)
 		{

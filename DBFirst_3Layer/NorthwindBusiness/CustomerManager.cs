@@ -18,29 +18,25 @@ namespace NorthwindBusiness
 		public void Create(string customerId, string contactName, string companyName, string city = null)
 		{
 			var newCust = new Customer() { CustomerId = customerId, ContactName = contactName, CompanyName = companyName };
-			using (var db = new NorthwindContext())
-			{
-				db.Customers.Add(newCust);
-				db.SaveChanges();
-			}
+
+			_service.CreateCustomer(newCust);
+			_service.SaveCustomerChanges();
 		}
 
 		public void Update(string customerId, string contactName, string city, string postcode, string country)
 		{
-			using (var db = new NorthwindContext())
-			{
-				SelectedCustomer = _service.GetCustomerById(customerId);
-				SelectedCustomer.ContactName = contactName;
-				SelectedCustomer.City = city;
-				SelectedCustomer.PostalCode = postcode;
-				SelectedCustomer.Country = country;
-				// write changes to database
-				_service.SaveCustomerChanges();
-			}
+			SelectedCustomer = _service.GetCustomerById(customerId);
+			SelectedCustomer.ContactName = contactName;
+			SelectedCustomer.City = city;
+			SelectedCustomer.PostalCode = postcode;
+			SelectedCustomer.Country = country;
+			// write changes to database
+			_service.SaveCustomerChanges();
 		}
 
-		public void Delete()
+		public void Delete(string customerId)
 		{
+			_service.DeleteCustomer(customerId);
 		}
 
 		public List<Customer> RetrieveAll()
