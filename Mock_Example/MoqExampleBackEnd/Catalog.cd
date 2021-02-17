@@ -39,7 +39,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MoqExampleBackEnd.DbModel.ExampleContext">
-    <Position X="6.25" Y="3.25" Width="2.25" />
+    <Position X="6.5" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DbModel\ExampleContext.cs</FileName>

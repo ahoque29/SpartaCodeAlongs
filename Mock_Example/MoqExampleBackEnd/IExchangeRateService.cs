@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoqExampleBackEnd
+﻿namespace MoqExampleBackEnd
 {
-    public interface IExchangeRateService
-    {
-        string GetLatestRates();
-        public decimal GetRateFor(string baseCurrency, string targetCurrency);
-    }
+	public interface IExchangeRateService
+	{
+		string GetLatestRates();
+
+		public decimal GetRateFor(string baseCurrency, string targetCurrency);
+	}
 }

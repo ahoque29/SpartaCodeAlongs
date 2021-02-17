@@ -1,9 +1,7 @@
 using NUnit.Framework;
 using NorthwindBusiness;
 using NorthwindData;
-using NorthwindData.Services;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace NorthwindTests
 {

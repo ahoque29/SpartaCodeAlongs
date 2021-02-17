@@ -2,12 +2,15 @@
 
 namespace MoqExampleBackEnd.DbModel
 {
-    public class ExampleContext : DbContext
-    {
-        public ExampleContext() { }
-        public ExampleContext(DbContextOptions<ExampleContext> options) : base(options)
-        { }
+	public class ExampleContext : DbContext
+	{
+		public ExampleContext()
+		{
+		}
 
-        public virtual DbSet<CatalogItem> CatalogItems { get; set; }
-    }
+		public ExampleContext(DbContextOptions<ExampleContext> options) : base(options)
+		{ }
+
+		public virtual DbSet<CatalogItem> CatalogItems { get; set; }
+	}
 }
