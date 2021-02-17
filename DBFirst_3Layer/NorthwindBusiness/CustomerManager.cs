@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NorthwindData;
 using NorthwindData.Services;
 
@@ -36,7 +37,14 @@ namespace NorthwindBusiness
 
 		public void Delete(string customerId)
 		{
-			_service.DeleteCustomer(customerId);
+			try
+			{
+				_service.DeleteCustomer(customerId);
+			}
+			catch (ArgumentNullException e)
+			{
+				//return "Customer Not Found";
+			}
 		}
 
 		public List<Customer> RetrieveAll()
